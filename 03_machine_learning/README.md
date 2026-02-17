@@ -1,1 +1,0 @@
-This folder contains machine learning practice.
