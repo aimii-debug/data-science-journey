@@ -1,0 +1,267 @@
+import json
+from pathlib import Path
+
+nb = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "# NumPy Portfolio Practice\n",
+                "\n",
+                "This notebook is a complete NumPy portfolio practice guide with ordered sections for learning and showcasing your skills.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "import numpy as np\n",
+                "print('NumPy version:', np.__version__)\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 1. Array Creation\n",
+                "\n",
+                "Create arrays using common NumPy methods.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "arr_from_list = np.array([1, 2, 3, 4, 5])\n",
+                "arr_zeros = np.zeros((2, 3))\n",
+                "arr_ones = np.ones((2, 3))\n",
+                "arr_eye = np.eye(3)\n",
+                "arr_arange = np.arange(0, 10, 2)\n",
+                "arr_linspace = np.linspace(0, 1, 5)\n",
+                "print('From list:', arr_from_list)\n",
+                "print('Zeros:\n', arr_zeros)\n",
+                "print('Ones:\n', arr_ones)\n",
+                "print('Identity:\n', arr_eye)\n",
+                "print('Arange:', arr_arange)\n",
+                "print('Linspace:', arr_linspace)\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 2. Array Properties\n",
+                "\n",
+                "Inspect array shape, dtype, size, and dimensions.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "arr = np.array([[1, 2, 3], [4, 5, 6]])\n",
+                "print('Array:\n', arr)\n",
+                "print('Shape:', arr.shape)\n",
+                "print('Size:', arr.size)\n",
+                "print('Dtype:', arr.dtype)\n",
+                "print('Dimensions:', arr.ndim)\n",
+                "print('Itemsize (bytes):', arr.itemsize)\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 3. Indexing and Slicing\n",
+                "\n",
+                "Learn how to extract values from 1D and 2D arrays.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "arr1d = np.array([10, 20, 30, 40, 50])\n",
+                "print('1D array:', arr1d)\n",
+                "print('First element:', arr1d[0])\n",
+                "print('Last element:', arr1d[-1])\n",
+                "print('Slice 1:4:', arr1d[1:4])\n",
+                "print('Every 2nd element:', arr1d[::2])\n",
+                "\n",
+                "arr2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n",
+                "print('2D array:\n', arr2d)\n",
+                "print('Element [0,0]:', arr2d[0,0])\n",
+                "print('First row:', arr2d[0])\n",
+                "print('First column:', arr2d[:,0])\n",
+                "print('Subarray [0:2,1:3]:\n', arr2d[0:2, 1:3])\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 4. Array Operations\n",
+                "\n",
+                "Perform arithmetic operations on arrays and matrices.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "a = np.array([1, 2, 3, 4])\n",
+                "b = np.array([5, 6, 7, 8])\n",
+                "print('Add:', a + b)\n",
+                "print('Subtract:', a - b)\n",
+                "print('Multiply:', a * b)\n",
+                "print('Divide:', b / a)\n",
+                "print('Power:', a ** 2)\n",
+                "\n",
+                "mat1 = np.array([[1, 2], [3, 4]])\n",
+                "mat2 = np.array([[5, 6], [7, 8]])\n",
+                "print('Matrix dot:\n', np.dot(mat1, mat2))\n",
+                "print('Element-wise matmul:\n', mat1 * mat2)\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 5. Math and Statistics\n",
+                "\n",
+                "Use NumPy math and statistical functions for analysis.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "arr = np.array([0, np.pi/2, np.pi])\n",
+                "print('Sin:', np.sin(arr))\n",
+                "print('Cos:', np.cos(arr))\n",
+                "print('Sqrt of [1,4,9]:', np.sqrt(np.array([1, 4, 9])))\n",
+                "print('Exp of [1,2]:', np.exp(np.array([1, 2])))\n",
+                "print('Log of [1,10]:', np.log(np.array([1, 10])))\n",
+                "\n",
+                "data = np.array([1, 2, 3, 4, 5])\n",
+                "print('Sum:', np.sum(data))\n",
+                "print('Mean:', np.mean(data))\n",
+                "print('Median:', np.median(data))\n",
+                "print('Std Dev:', np.std(data))\n",
+                "print('Variance:', np.var(data))\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 6. Reshaping and Transformation\n",
+                "\n",
+                "Reshape arrays, transpose them, and stack arrays for portfolio workflows.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "arr = np.arange(12)\n",
+                "print('Original:', arr)\n",
+                "print('Reshaped (3,4):\n', arr.reshape(3, 4))\n",
+                "print('Transpose of a sample matrix:\n', np.array([[1,2,3],[4,5,6]]).T)\n",
+                "print('Horizontal stack:\n', np.hstack((np.array([1,2,3]), np.array([4,5,6]))))\n",
+                "print('Vertical stack:\n', np.vstack((np.array([1,2,3]), np.array([4,5,6]))))\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 7. Boolean Filtering and Sorting\n",
+                "\n",
+                "Apply filters and sorting to extract portfolio insights.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "data = np.array([5, 2, 8, 1, 9, 3, 7, 4, 6])\n",
+                "print('Sorted:', np.sort(data))\n",
+                "print('Indices for sorting:', np.argsort(data))\n",
+                "print('Greater than 5:', data[data > 5])\n",
+                "print('Even values:', data[data % 2 == 0])\n",
+                "print('Between 3 and 7:', data[(data >= 3) & (data <= 7)])\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 8. Portfolio Project: Sales Analysis\n",
+                "\n",
+                "Build a mini portfolio project analyzing sales transactions with NumPy.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "transactions = np.array([\n",
+                "    [1001, 1, 1200, 1500],\n",
+                "    [1002, 2, 450, 900],\n",
+                "    [1003, 1, 700, 2100],\n",
+                "    [1004, 3, 1300, 500],\n",
+                "    [1005, 2, 120, 1400],\n",
+                "    [1006, 1, 680, 850],\n",
+                "])\n",
+                "print('Transactions shape:', transactions.shape)\n",
+                "sales = transactions[:,2].astype(float) * transactions[:,1].astype(float)\n",
+                "profit = transactions[:,3].astype(float)\n",
+                "print('Total sales by transaction:', sales)\n",
+                "print('Total sales sum:', np.sum(sales))\n",
+                "print('Total profit sum:', np.sum(profit))\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 9. Practice Exercises\n",
+                "\n",
+                "Try these tasks to build portfolio-ready NumPy skills.\n"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "metadata": {"language": "python"},
+            "source": [
+                "# Exercise 1: Create a 4x4 array and print the diagonal\n",
+                "arr = np.arange(1, 17).reshape(4, 4)\n",
+                "print(arr)\n",
+                "print('Diagonal:', np.diag(arr))\n",
+                "\n",
+                "# Exercise 2: Compute total sales for sample price and quantity arrays\n",
+                "prices = np.array([100, 200, 150])\n",
+                "quantities = np.array([5, 3, 4])\n",
+                "print('Sales:', prices * quantities)\n",
+                "print('Total sales:', np.sum(prices * quantities))\n"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {"language": "python"},
+            "source": [
+                "## 10. Portfolio Notes\n",
+                "\n",
+                "Use this notebook in your portfolio to demonstrate NumPy array creation, indexing, operations, and a small analysis project.\n"
+            ]
+        }
+    ],
+    "metadata": {
+        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+        "language_info": {"name": "python", "version": "3.x"}
+    },
+    "nbformat": 4,
+    "nbformat_minor": 5
+}; p.write_text(json.dumps(nb, indent=2))"
